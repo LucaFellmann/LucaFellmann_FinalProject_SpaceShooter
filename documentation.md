@@ -19,3 +19,14 @@ The buttons use `INPUT_PULLUP`, meaning they return HIGH (1) when released and L
 
 The game uses the **Web Serial API** to receive these values in Google Chrome. JavaScript processes the incoming data and translates button presses into movement and shooting actions. The original keyboard controls remain available as an alternative. They are left arrow to go left right arrow to go right and space to shoot. 
 
+
+## Moodboard
+
+<picture>
+    <img
+        src="Images/moodboard.png"
+        alt="Moodboard for Fight for the Universe"
+        width="1024"
+        height="768"
+    />
+</picture>
