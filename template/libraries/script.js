@@ -538,3 +538,78 @@ window.addEventListener("keyup", (event) => {
         moveRight = false; // Stop moving right
     }
 });
+
+
+/*
+ * ARDUINO CONTROLLER - WEB SERIAL API
+ * Connects the Arduino to the browser via USB.
+ * Reads the three buttons to move and shoot.
+ */
+
+const connectArduinoButton = document.getElementById("connectArduino");
+
+async function connectArduino() {
+
+    // Check if the browser supports Web Serial
+    if (!("serial" in navigator)) {
+        alert("Please use Google Chrome to connect your Arduino.");
+        return;
+    }
+
+    try {
+        // Ask the user to select the Arduino
+        const port = await navigator.serial.requestPort();
+
+        // Open the USB connection
+        await port.open({ baudRate: 9600 });
+
+        connectArduinoButton.textContent = "Arduino Connected";
+
+        // Read incoming data from the Arduino
+        const reader = port.readable
+            .pipeThrough(new TextDecoderStream())
+            .getReader();
+
+        let buffer = "";
+
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (done) break;
+
+            buffer += value;
+
+            // Process every complete line
+            while (buffer.includes("\n")) {
+                const newline = buffer.indexOf("\n");
+                const line = buffer.slice(0, newline).trim();
+                buffer = buffer.slice(newline + 1);
+
+                const buttons = line.split(",");
+
+                console.log("Arduino:", buttons);
+
+                if (buttons.length !== 3) continue;
+
+                // Update movement from Arduino buttons
+                moveLeft = buttons[0] === "0";
+                moveRight = buttons[2] === "0";
+
+                // Shoot when the middle button is pressed
+                if (buttons[1] === "0" &&
+                    !gameScreen.hidden &&
+                    !gameLost &&
+                    !gameWon) {
+                    shootBullet();
+                }
+            }
+        }
+
+    } catch (error) {
+        console.error("Arduino connection error:", error);
+        connectArduinoButton.textContent = "Connect Arduino";
+    }
+}
+
+// Connect when the player clicks the button
+connectArduinoButton.addEventListener("click", connectArduino);
