@@ -11,7 +11,7 @@
 </picture>
 
 
-### Arduino Controller
+## Arduino Controller
 
 The Space Shooter game can be controlled using three physical push buttons connected to an Arduino UNO. The red button (D2) moves the spaceship left, the black button (D3) shoots bullets, and the green button (D4) moves the spaceship right.
 
@@ -30,3 +30,9 @@ The game uses the **Web Serial API** to receive these values in Google Chrome. J
         height="768"
     />
 </picture>
+
+
+## Figma UI
+
+[Figma UI ↗](https://www.figma.com/design/ipfHWDDEjTYDDyfGYmzjur/LucaFellmann-WebProject?node-id=14-199&t=oOxm1jKuoyxP8VCr-1)
+
