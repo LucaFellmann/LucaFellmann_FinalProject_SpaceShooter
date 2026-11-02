@@ -82,3 +82,10 @@ The player wins by reaching **100 points**. The game ends if an alien reaches th
 - Serial communication at 9600 baud
 
 The game can also be played using the keyboard without connecting an Arduino.
+
+
+## Video Demonstration
+
+The following video demonstrates my Space Shooter prototype, including the Arduino controller, the Web Serial API connection, and the gameplay.
+
+[Watch the Project Demonstration ↗](https://www.youtube.com/watch?v=h5dCmtIMvJY)
