@@ -76,7 +76,7 @@ The player wins by reaching **100 points**. The game ends if an alien reaches th
 
 ### 5. Technical Requirements
 
-- Google Chrome with Web Serial API support
+- Google Chrome with Web Serial API support (needs to be allowed)
 - Arduino UNO connected via USB
 - Three push buttons connected to digital pins D2, D3, and D4
 - Serial communication at 9600 baud
