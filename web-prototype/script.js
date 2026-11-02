@@ -113,7 +113,7 @@ function spawnMonster() {
     monsters.push({
         image: image, // Alien image
         x: Math.random() * (gameWidth - monsterWidth), // Random horizontal position
-        y: 0, // Spawn at the top of the screen
+        y: 150, // Spawn below the HighScore Display
         width: monsterWidth, // Alien width
         height: monsterHeight, // Alien height
         speedX: Math.random() < 0.5 ? -120 : 120 // Random left or right movement
