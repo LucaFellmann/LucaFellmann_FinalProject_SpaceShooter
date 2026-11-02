@@ -124,7 +124,7 @@ function spawnMonster() {
 /*
  * SHOOT BULLET
  * This function creates a bullet above the spaceship.
- * The player can only shoot once every 500 milliseconds.
+ * The player can only shoot once every 100 milliseconds (but can easily be adapted if you want to be challenged)
  */
 
 function shootBullet() {
@@ -212,7 +212,7 @@ for (const bullet of bullets) {
         // Give points depending on the alien color
         score += monsterType + 1; // Yellow +1, Blue +2, Pink +3
 
-        // Check if the player has reached 100 points
+        // Check if the player has reached 500 points
         if (score >= 500) {
             gameWon = true; // Player wins the game
             return; // Stop updating the game
@@ -245,7 +245,7 @@ monsters = monsters.filter(monster => !monster.hit);
     // Count how much time has passed
     spawnTimer += deltaSeconds;
 
-    // Spawn one new alien every 2 seconds
+    // Spawn one new alien every 0.5 seconds
     if (spawnTimer >= 0.5) {
         spawnMonster(); // Create a new alien
         spawnTimer -= 0.5; // Reset the timer while keeping extra time
