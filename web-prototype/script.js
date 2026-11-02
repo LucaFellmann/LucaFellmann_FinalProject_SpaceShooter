@@ -275,16 +275,6 @@ monsters = monsters.filter(monster => !monster.hit);
             return; // Stop updating the aliens
         }}}
 
-
-
-/*
- * DRAW GAME
- * This function draws everything visible on the game screen.
- * It draws the background, stars, and aliens.
- * If the player loses, it displays the Game Over image.
- */
-
-
 /*
  * DRAW GAME
  * This function draws everything visible on the game screen.
@@ -375,6 +365,33 @@ function drawGame() {
         gameWidth / 2, // Center horizontally
         120 // Vertical position below the HighScore image 
     );
+
+    /*
+     * POINT SYSTEM GUIDE
+     * Shows the original alien images and their points
+     * in the bottom-left corner of the game.
+     */
+
+    const guideY = gameHeight - 75;
+
+    // Three aliens smaller 
+    for (let i = 0; i < 3; i++) {
+        const x = 20 + i * 65;
+
+        context.drawImage(assets.monsters[i], x, guideY, 20, 20);
+
+        // Display the points next to each alien
+        context.fillStyle = "#ffffff";
+        context.font = "bold 15px Arial";
+        context.textAlign = "left";
+        context.fillText("= " + (i + 1), x + 25, guideY + 16);
+    }
+
+    // Display the winning condition
+    context.fillStyle = "#ffffff";
+    context.font = "bold 14px Arial";
+    context.fillText("Reach 100 points to win!", 20, gameHeight - 25);
+
 
 
     // Display Game Over if the player loses
