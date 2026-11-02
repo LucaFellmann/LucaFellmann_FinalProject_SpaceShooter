@@ -132,7 +132,7 @@ function shootBullet() {
     const currentTime = performance.now(); // Get the current time
 
     // Check if 500 milliseconds have passed since the last shot
-    if (currentTime - lastShotTime < 500) {
+    if (currentTime - lastShotTime < 100) {
         return; // Stop if the cooldown is not finished
     }
 
@@ -213,7 +213,7 @@ for (const bullet of bullets) {
         score += monsterType + 1; // Yellow +1, Blue +2, Pink +3
 
         // Check if the player has reached 100 points
-        if (score >= 100) {
+        if (score >= 500) {
             gameWon = true; // Player wins the game
             return; // Stop updating the game
         }
@@ -390,7 +390,7 @@ function drawGame() {
     // Display the winning condition
     context.fillStyle = "#ffffff";
     context.font = "bold 14px Arial";
-    context.fillText("Reach 100 points to win!", 20, gameHeight - 25);
+    context.fillText("Reach 500 points to win!", 20, gameHeight - 25);
 
 
 
